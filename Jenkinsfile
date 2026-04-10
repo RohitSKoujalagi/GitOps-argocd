@@ -58,7 +58,7 @@ pipeline {
         
         stage('Security Scan (Trivy)') {
             steps {
-                container("trivy-scanner"){
+                container("dind-agent"){
                     echo "Scanning the image for vulnerabilities..."
                     sh '''
                         docker run --rm \
