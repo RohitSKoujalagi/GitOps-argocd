@@ -6,7 +6,7 @@ metadata:
  name: django-app-deployment
  namespace: django
 spec:
- replicas: 1
+ replicas: 2
  selector:
   matchLabels:
    app: django-app
