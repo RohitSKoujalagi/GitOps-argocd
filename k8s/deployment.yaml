@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-	  annotations:
-	    argocd.argoproj.io/tracking-id: django-app:apps/Deployment:django/django-app-deployment
-	  name: django-app-deployment
-	  namespace: django
+ annotations:
+  argocd.argoproj.io/tracking-id: django-app:apps/Deployment:django/django-app-deployment
+ name: django-app-deployment
+ namespace: django
 spec:
-	  replicas: 1
-	  selector:
-	    matchLabels:
-	      app: django-app
-	  template:
-	    metadata:
-	      labels:
-	        app: django-app
-	    spec:
-	      containers:
-	        - image: rohitskoujalagi/django-app:41
-	          name: django-app
-	          ports:
-	            - containerPort: 8000
+ replicas: 1
+ selector:
+  matchLabels:
+   app: django-app
+ template:
+  metadata:
+   labels:
+    app: django-app
+  spec:
+   containers:
+   - image: rohitskoujalagi/django-app:41
+     name: django-app
+     ports:
+   - containerPort: 8000
