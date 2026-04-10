@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: django-app-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: django-app
+  template:
+    metadata:
+      labels:
+        app: django-app
+    spec:
+      containers:
+      - name: django-app
+        image: rohitskoujalagi/django-app:${BUILD_ID}
+        ports:
+        - containerPort: 8000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: django-app-service
+spec:
+  selector:
+    app: django-app
+  ports:
+    - protocol: TCP
+      port: 8000
+      targetPort: 8000
