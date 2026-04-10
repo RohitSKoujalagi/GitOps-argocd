@@ -16,7 +16,7 @@ spec:
 	        app: django-app
 	    spec:
 	      containers:
-	        - image: rohitskoujalagi/django-app:${BUILD_ID}
+	        - image: rohitskoujalagi/django-app:41
 	          name: django-app
 	          ports:
 	            - containerPort: 8000
