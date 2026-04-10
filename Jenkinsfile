@@ -89,7 +89,7 @@ pipeline {
         //                     # Git actions
         //                     git add .
         //                     git commit -m "Automated commit from Jenkins Build #${BUILD_ID}"
-        //                     git push origin HEAD:${GITHUB_REPO}
+        //                     git push origin main:${GITHUB_REPO}
         //                 '''
         //             }
         //             // 2. Commit and push the changes back to GitHub
@@ -115,7 +115,7 @@ pipeline {
             environment {
                 // The URL of your SEPARATE ArgoCD manifests repository
                 MANIFEST_REPO = "https://github.com/RohitSKoujalagi/GitOps-argocd.git"
-                MANIFEST_BRANCH = "HEAD" // or "master" depending on your repo
+                MANIFEST_BRANCH = "main" // or "master" depending on your repo
             }
             steps {
                 container("dind-agent") {
@@ -148,7 +148,7 @@ pipeline {
                             git commit -m "Automated image update to build #${BUILD_ID} [skip ci]"
                             
                             # Git knows 'origin' is the MANIFEST_REPO because we just cloned it
-                            git push origin HEAD:${MANIFEST_BRANCH}
+                            git push origin main:${MANIFEST_BRANCH}
                         """
                     }
                 }
