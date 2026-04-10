@@ -42,7 +42,7 @@ pipeline {
             steps{
                 container("dind-agent"){
                     git url: "${GITHUB_REPO}",
-                        branch: "main",
+                        branch: "master",
                         credentialsId: 'jenkins-ghid' 
                     
                     echo "Building the Image..."
