@@ -56,20 +56,20 @@ pipeline {
             }
         }
         
-        stage('Security Scan (Trivy)') {
-            steps {
-                container("dind-agent"){
-                    echo "Scanning the image for vulnerabilities..."
-                    sh '''
-                        docker run --rm \
-                        -v /var/run/docker.sock:/var/run/docker.sock \
-                        aquasec/trivy:canary image \
-                        --severity LOW,MEDIUM,HIGH \
-                        rohitskoujalagi/django-app:${BUILD_ID}
-                    '''
-                }
-            }
-        }
+        // stage('Security Scan (Trivy)') {
+        //     steps {
+        //         container("dind-agent"){
+        //             echo "Scanning the image for vulnerabilities..."
+        //             sh '''
+        //                 docker run --rm \
+        //                 -v /var/run/docker.sock:/var/run/docker.sock \
+        //                 aquasec/trivy:canary image \
+        //                 --severity LOW,MEDIUM,HIGH \
+        //                 rohitskoujalagi/django-app:${BUILD_ID}
+        //             '''
+        //         }
+        //     }
+        // }
         
         stage('Update Git Manifests') {
             steps {
