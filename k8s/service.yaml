@@ -1,15 +1,17 @@
 apiVersion: v1
 kind: Service
 metadata:
- annotations:
-  argocd.argoproj.io/tracking-id: django-app:/Service:django/django-app-service
- name: django-app-service
- namespace: django
+  annotations:
+    argocd.argoproj.io/tracking-id: django-app:/Service:django/django-app-service
+  labels:
+    app: django-app # <--- ADD THIS! This is what the ServiceMonitor is looking for.
+  name: django-app-service
+  namespace: django
 spec:
- ports:
- - name: metrics-port
-   port: 8000
-   protocol: TCP
-   targetPort: 8000
- selector:
-  app: django-app
+  ports:
+  - name: metrics-port
+    port: 8000
+    protocol: TCP
+    targetPort: 8000
+  selector:
+    app: django-app
