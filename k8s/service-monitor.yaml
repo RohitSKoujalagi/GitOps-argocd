@@ -1,0 +1,15 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: django-app-monitor
+  namespace: django # Deploy this in the same namespace as your Service
+  labels:
+    release: kube-prometheus-stack # Or whatever your Prometheus release label is
+spec:
+  selector:
+    matchLabels:
+      app: django-app 
+  endpoints:
+    - port: metrics-port # <-- This matches the name you just added to the Service
+      path: /metrics
+      interval: 15s
